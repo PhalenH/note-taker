@@ -15,9 +15,8 @@ const modRoutes = require("./routes");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Add a static middleware for serving assets in the public folder
+// Add a static middleware for serving assets in the public folder and uses all routes made in route folder
 app.use(express.static("public"));
-
 app.use(modRoutes);
 
 // GET Route for notes page

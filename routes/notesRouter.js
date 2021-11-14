@@ -1,4 +1,4 @@
-// import router from express as fs/uuid packages
+// import router from express and fs/uuid packages
 const notesRouter = require("express").Router();
 const fs = require("fs");
 const uuid = require("uuid");
