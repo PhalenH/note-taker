@@ -1,11 +1,13 @@
-// import router from express
-const notesRouter = require('express').Router();
+// import router from express as fs/uuid packages
+const notes = require("express").Router();
+const fs = require("fs");
+const uuid = require("uuid");
 
 // test router /api/feedback/test
-notesRouter.get('/test', (req, res)=>{
-    console.log("notes works");
-    res.send("notes works");
+notes.get("/test", (req, res) => {
+  console.log("notes works");
+  res.send("notes works");
 });
 
 // export route
-module.exports = notesRouter;
+module.exports = notes;
