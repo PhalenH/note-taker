@@ -3,8 +3,8 @@ const express = require("express");
 const uuid = require("uuid");
 const fs = require("fs");
 
-// imports the current set of reviews (an array of objects)
-const reviews = require("./db/reviews.json");
+// imports the current array of objects form db.json in db folder
+const db = require("./db/db.json");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
