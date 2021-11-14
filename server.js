@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // import our routers from routes
-const modRoutes = require('./routes')
+const modRoutes = require("./routes");
 
 // Middleware for parsing application/json and urlencoded data
 app.use(express.json());
@@ -17,6 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Add a static middleware for serving assets in the public folder
 app.use(express.static("public"));
+
+app.use(modRoutes);
 
 // look into activity 20 with data persistance for reference in building post method
 
