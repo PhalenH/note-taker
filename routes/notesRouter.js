@@ -23,10 +23,11 @@ notesRouter.post("", (req, res) => {
   console.log("notes post api works");
   res.send("notes post api works");
 
-  const {text} = req.body
+  const {title, text} = req.body
 
-  if(text) {
+  if(title && text ) {
     const newNote = {
+      title,
       text,
       note_id: uuid(),
     };
