@@ -2,9 +2,10 @@
 const express = require("express");
 const uuid = require("uuid");
 const fs = require("fs");
+const path = require('path');
 
 // imports the current array of objects form db.json in db folder
-const db = require("./db/db.json");
+// const db = require("./db/db.json");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -20,16 +21,14 @@ app.use(express.static("public"));
 app.use(modRoutes);
 
 // GET Route for notes page
-app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/notes.html'))
+app.get("/notes", (req, res) =>
+  res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
 
 // GET Route for index(landing) page
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "/public/index.html"))
 );
-
-// look into activity 20 with data persistance for reference in building post method
 
 app.listen(PORT, () =>
   console.log(`Note taker listening at http://localhost:${PORT}`)
