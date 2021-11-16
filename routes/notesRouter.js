@@ -2,7 +2,7 @@
 const notesRouter = require("express").Router();
 const { json } = require("express");
 const fs = require("fs");
-const uuid = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 // imports array of objects from db.json
 const notes = require("../db/db.json");
 
@@ -32,7 +32,7 @@ notesRouter.post("/", (req, res) => {
     const newNote = {
       title,
       text,
-      note_id: uuid,
+      note_id: uuidv4(),
     };
     //appending newNote object to notes' array of objects
     notes.push(newNote);
@@ -41,7 +41,7 @@ notesRouter.post("/", (req, res) => {
 
     // writes new string to the db.json file
     fs.writeFile("./db/db.json", noteString, (err) =>
-    err ? console.error(err) : console.info(`New note written to databse!`)
+      err ? console.error(err) : console.info(`New note written to databse!`)
     );
 
     // const response = {
