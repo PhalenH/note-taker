@@ -20,8 +20,6 @@ notesRouter.get("/", (req, res) => {
     res.json(JSON.parse(data));
   });
 });
-// res.json of the data send results to that
-// 19/20 21/22 24 26 28
 
 // POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.
 notesRouter.post("/", (req, res) => {
@@ -38,9 +36,13 @@ notesRouter.post("/", (req, res) => {
     };
     //appending newNote object to notes' array of objects
     notes.push(newNote);
-    // converts notes array of objects to string, that way it can be used in fs.writeFile as the data input
+    // converts notes' array of objects to string, that way it can be used in fs.writeFile as the data input
     const noteString = JSON.stringify(notes);
-    console.log(noteString);
+
+    // writes new string to the db.json file
+    fs.writeFile("./db/db.json", noteString, (err) =>
+    err ? console.error(err) : console.info(`New note written to databse!`)
+    );
 
     // const response = {
     //   status: "It worked",
