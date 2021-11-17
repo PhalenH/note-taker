@@ -17,7 +17,15 @@ The purpose was to is to modify starter code to create an application called Not
     - THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
 
 
-
+## My contributions:
+- Added server.js file which:
+    - imports necessary packages and files, establishes port number, middleware for parsing data, establishes static folder, get routes to send a user to correct page, and listen route.
+- Added routes foler with an index and notesRouter js files which:
+    - The index file adds route to file to be used in server.js, this feature and file would be more advantageous with an application that has more than just one route.
+    - The notesRouter contains the necessary packages anf files as well as 
+        - a .get route which reads the db.json file and returns all saves notes as JSON  
+        - a .post route which takes the input from the notes page, saves it as a new notes and appends it to the existing array in db.json, and uses the writeFile function to write the new array to the db.json file
+        
 ## Table of Contents
 - [Installation](#Installation)
 - [Usage](#Usage)
@@ -26,7 +34,10 @@ The purpose was to is to modify starter code to create an application called Not
 
 
 ## Installation: 
-- Download or clone the repo from GitHub
+- Download or clone the repo from GitHub and open application once on local machine
+
+    or
+- Open the app from the link provided in README
 
 ## Usage: 
 Once the note taker application is open a user can:
@@ -39,10 +50,10 @@ Once the note taker application is open a user can:
 There a no plans for public contribution at this time.
 
 ## Final-Product:
-Here is a screenshot and link to the finished work day scheduler:
-[Link to webpage]()
+Here is a screenshot and link to the finished note taker:
+[Link to webpage](https://nameless-woodland-76790.herokuapp.com/)
 
-![Note Take notes page with previous notes on left side](./assets/work-day-scheduler.png)
+![Note Take notes page with previous notes on left side](./public/assets/note-taker-screenshot.png)
 
 ## Questions
 - If you have any questions, email me at pchaze@yahoo.com
