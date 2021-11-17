@@ -1,10 +1,10 @@
 // import router from express and fs/uuid packages
 const notesRouter = require("express").Router();
-const { json } = require("express");
+const { channel } = require("diagnostics_channel");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 // imports array of objects from db.json
-const notes = require("../db/db.json");
+let notes = require("../db/db.json");
 
 // test router /api/feedback/test
 notesRouter.get("/test", (req, res) => {
@@ -50,13 +50,32 @@ notesRouter.post("/", (req, res) => {
     // };
     // console.log(response);
     // res.status(201).json(response);
-  } else {
-    res.status(500).json("Error in adding new note");
-  }
+  } //else {
+  //   res.status(500).json("Error in adding new note");
+  // }
 });
-// You'll need to find a way to give each note a !! unique id !! when it's saved
-// (look into npm packages that could do this for you)
-// nodeJS activity 14 uses appendfile for reference
+
+// DELETE /api/notes/:id should receive a query parameter that contains the id of a note to delete
+// notesRouter.delete("/:id", (req, res) => {
+//   // console.log(req.params.id);
+//   const { id } = req.params;
+//   console.log(notes)
+//   const deletedNote = notes.find(note => note.note_id === id);
+//   if (deletedNote) {
+//     afterDeletedNotes = notes.filter((note => note.note_id !== id));
+//     // notes.splice(0, notes.length)
+//     // notes.push(afterDeletedNotes)
+//     const afterDeletedNoteString = JSON.stringify(notes);
+//     fs.writeFile("./db/db.json", afterDeletedNoteString, (err) =>
+//       err ? console.error(err) : console.info(`New note written to databse!`)
+//     );
+//     res.status(200).json(deletedNote);
+//   } else {
+//     res
+//       .status(404)
+//       .json({ message: "Note not found, no ID matches an existing note." });
+//   }
+// });
 
 // export route
 module.exports = notesRouter;
