@@ -22,10 +22,10 @@ The purpose was to is to modify starter code to create an application called Not
     - imports necessary packages and files, establishes port number, middleware for parsing data, establishes static folder, get routes to send a user to correct page, and listen route.
 - Added routes foler with an index and notesRouter js files which:
     - The index.js file adds route to file to be used in server.js, this feature and file would be more advantageous with an application that has more than just one route.
-    - The notesRouter.js file contains the necessary packages anf files as well as 
-        - a .get route which reads the db.json file and returns all saves notes as JSON  
-        - a .post route which takes the input from the notes page, saves it as a new notes and appends it to the existing array in db.json, and uses the writeFile function to write the new array to the db.json file
-        - a .delete route which matches the id provided in the url as part of the :id wildcard to a note, and if it matches, it deletes the notes from db.JSON array, establishes the new array, and then uses writefile to write the new array to db.json similar to .post route (but with 1 less note).
+    - The notesRouter.js file contains the necessary packages and files as well as the following routes:
+        - .get route which reads the db.json file and returns all saves notes as JSON  
+        - .post route which takes the input from the notes page, saves it as a new notes and appends it to the existing array in db.json, and uses the writeFile function to write the new array to the db.json file
+        - .delete route which matches the id provided in the url as part of the :id wildcard to a note, and if it matches, it deletes the notes from db.JSON array, establishes the new array, and then uses writefile to write the new array to db.json similar to .post route (but with 1 less note).
 
 ## Table of Contents
 - [Installation](#Installation)
