@@ -24,7 +24,6 @@ notesRouter.get("/", (req, res) => {
 // POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.
 notesRouter.post("/", (req, res) => {
   console.log("notes post api works");
-  res.send("notes post api works");
 
   const { title, text } = req.body;
 
@@ -44,15 +43,15 @@ notesRouter.post("/", (req, res) => {
       err ? console.error(err) : console.info(`New note written to databse!`)
     );
 
-    // const response = {
-    //   status: "It worked",
-    //   body: newNote,
-    // };
-    // console.log(response);
-    // res.status(201).json(response);
-  } //else {
-  //   res.status(500).json("Error in adding new note");
-  // }
+    const response = {
+      status: "It worked",
+      body: newNote,
+    };
+    console.log(response);
+    res.status(201).json(response);
+  } else {
+    res.status(500).json("Error in adding new note");
+  }
 });
 
 // DELETE /api/notes/:id should receive a query parameter that contains the id of a note to delete
@@ -71,12 +70,12 @@ notesRouter.delete("/:id", (req, res) => {
     fs.writeFile("./db/db.json", afterDeletedNoteString, (err) =>
       err ? console.error(err) : console.info(`New note written to databse!`)
     );
-    // res.status(200).json(deletedNote);
-  } // else {
-  //   res
-  //     .status(404)
-  //     .json({ message: "Note not found, no ID matches an existing note." });
-  // }
+    res.status(200).json(deletedNote);
+  }  else {
+    res
+      .status(404)
+      .json({ message: "Note not found, no ID matches an existing note." });
+  }
 });
 
 // export route
