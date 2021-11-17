@@ -56,23 +56,28 @@ notesRouter.post("/", (req, res) => {
 });
 
 // DELETE /api/notes/:id should receive a query parameter that contains the id of a note to delete
-notesRouter.delete("/:id", (req, res) => {
-  const { id } = req.params;
-  const deletedNote = notes.find(note => note.note_id === id);
-  if (deletedNote) {
-    afterDeletedNotes = notes.filter(note => note.note_id !== id);
-    notes = afterDeletedNotes
-    const afterDeletedNoteString = JSON.stringify(notes);
-    fs.writeFile("./db/db.json", afterDeletedNoteString, (err) =>
-      err ? console.error(err) : console.info(`New note written to databse!`)
-    );
-    // res.status(200).json(deletedNote);
-  } // else {
-  //   res
-  //     .status(404)
-  //     .json({ message: "Note not found, no ID matches an existing note." });
-  // }
-});
+// notesRouter.delete("/:id", (req, res) => {
+//   const { id } = req.params;
+//   // finds a note that matches id given
+//   const deletedNote = notes.find(note => note.note_id === id);
+//   if (deletedNote) {
+//     // if note exists, filters through notes array and gets rid of note that matches ID
+//     afterDeletedNotes = notes.filter(note => note.note_id !== id);
+//     // takes new array of notes and declares notes as the new array
+//     notes = afterDeletedNotes
+//     // stringify notes
+//     const afterDeletedNoteString = JSON.stringify(notes);
+//     // writes new array to db.json
+//     fs.writeFile("./db/db.json", afterDeletedNoteString, (err) =>
+//       err ? console.error(err) : console.info(`New note written to databse!`)
+//     );
+//     // res.status(200).json(deletedNote);
+//   } // else {
+//   //   res
+//   //     .status(404)
+//   //     .json({ message: "Note not found, no ID matches an existing note." });
+//   // }
+// });
 
 // export route
 module.exports = notesRouter;
